@@ -8,3 +8,6 @@ output_images/
 *.moved-aside
 *.xcscmblueprint
 *.txt
+*.mp4
+*.gif
+*.png
