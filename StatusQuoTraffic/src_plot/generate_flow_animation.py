@@ -138,10 +138,10 @@ def plot_graph_circle_deux(filename, subgraph_size, num_subgraphs,save_path=None
 def plot_all_graphs(num_graphs, subgraph_size, num_subgraphs):
     for i in range(1, num_graphs + 1):
         filename = f"graph_{i}.txt"
-        save_path = os.path.join("output_images", f"graph_{i}.png")
+        save_path = os.path.join("plots", f"graph_{i}.png")
         
         # Make sure output directory exists
-        os.makedirs("output_images", exist_ok=True)
+        os.makedirs("plots", exist_ok=True)
         
         print(f"Plotting {filename} -> {save_path}")
         plot_graph_circle_deux(filename, subgraph_size, num_subgraphs, save_path)
@@ -149,7 +149,7 @@ def plot_all_graphs(num_graphs, subgraph_size, num_subgraphs):
 def create_animation(num_graphs, fps=2, output_folder = "animations"):
     images = []
     for i in range(1, num_graphs + 1):
-        img_path = os.path.join("output_images", f"graph_{i}.png")
+        img_path = os.path.join("plots", f"graph_{i}.png")
         images.append(imageio.imread(img_path))
     output_path = os.path.join(output_folder, 'graph_animation.mp4')
     imageio.mimsave(output_path, images, fps=fps, codec = 'libx264')
