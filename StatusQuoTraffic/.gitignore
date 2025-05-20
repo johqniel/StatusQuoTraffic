@@ -1,0 +1,9 @@
+# Xcode
+data/
+animations/
+plots/
+output_images/
+*.xcuserstate
+*.xcuserdata/
+*.moved-aside
+*.xcscmblueprint
