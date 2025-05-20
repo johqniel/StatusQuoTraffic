@@ -28,6 +28,27 @@ void World::start_simulation(){
         print_int_vector(agents[random_id].path_old);
         
         std::cout << std::endl;
+
+    }
+}
+
+void World::start_simulation_write_data(){
+    for (int t = 0; t < simulation_horizon; t++){
+        //std::cout << "Simulating time step t = " << t << std::endl;
+        //std::cout << "Agent number 1 id: " << agents[0].agent_id <<  " and path: " <<"";
+        print_int_vector(agents[0].path_old);
+        std::cout << std::endl;
+        
+        update();
+        
+        std::cout << "Simulated time step t = " << t << std::endl;
+        int random_id = generate_random_unsigned(number_of_agents);
+        std::cout << "Agent number " << random_id << " : " << agents[random_id].agent_id << " and path: " << "";
+        print_int_vector(agents[random_id].path_old);
+        
+        std::cout << std::endl;
+        std::string file_name = "graph_" + std::to_string(t) + ".txt";
+        map.exportToFile("/Users/nielo/Desktop/StatusQuoTraffic/StatusQuoTraffic/data/" + file_name);
     }
 }
 

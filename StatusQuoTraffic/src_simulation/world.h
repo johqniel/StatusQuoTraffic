@@ -21,7 +21,7 @@ public:
     int number_of_subgraphs = 6;
     std::vector<Agent> agents;
     Graph map;
-    int simulation_horizon = 10;
+    int simulation_horizon = 60;
     int number_of_agents = 1000;
     unsigned long nextFreeAgentId = 0;
     std::unordered_map<std::string,std::unordered_map<std::string,std::tuple<double ,double >>> commuter_type_weights_matrix;
@@ -37,6 +37,8 @@ public:
     void start_simulation(); // contains
         // for loop t in 1,.. horizon
             // update()
+    
+    void start_simulation_write_data();
     
     void setup_commuter_type_weights_matrix();
     void setup_commuter_types_weights_of_agents();

@@ -8,6 +8,9 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import math
+import os
+
+data_folder = os.path.join("data")  # go up one level, then into "data"
 
 
 def plot_graph_circle_deux(filename, subgraph_size, num_subgraphs):
@@ -22,10 +25,15 @@ def plot_graph_circle_deux(filename, subgraph_size, num_subgraphs):
     try:
         # Define custom labels
         custom_labels = ["bike","public","car","bike-public","public-bike","car-public","walk"]  # Add "walk" to match the number of expected subgraphs
-
+        file_path = os.path.join(data_folder, filename)
+        print("Passing file_path = ", file_path)
+    
+        if not os.path.isfile(file_path):
+            print(f"Error: File not found at {file_path}")
+            return
     
         # Read the graph from the edgelist file.
-        G = nx.read_edgelist(filename, nodetype=int, data=(('weight', float), ('type', str), ('flow', int), ('capacity', int)), create_using=nx.DiGraph()) # Changed a and b to flow and capacity
+        G = nx.read_edgelist(file_path, nodetype=int, data=(('weight', float), ('type', str), ('flow', int), ('capacity', int)), create_using=nx.DiGraph()) # Changed a and b to flow and capacity
 
         # Check if the graph is empty
         if not G.nodes:
@@ -116,13 +124,16 @@ def plot_graph_circle_deux(filename, subgraph_size, num_subgraphs):
         plt.show()
 
     except FileNotFoundError:
-        print(f"Error: File not found at {filename}")
+        print(f"Error: File not found at {file_path}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
 # Call the function with filename and size_of_subgraphs
 #plot_graph_subgroups("graph.txt", 7)  # Example: Group nodes into subgraphs of size 5
 #plot_graph_subgroups_circle("graph.txt", 7)  # Example: Group nodes into subgraphs of size 5
-plot_graph_circle_deux("graph_whole.txt", 7, 6)  # Example: Group nodes into subgraphs of size 5
+
+if __name__ == "__main__":
+    print("Looking for file at: ", data_folder)
+    plot_graph_circle_deux("graph_whole.txt", 7, 6)  # Example: Group nodes into subgraphs of size 5
 
 

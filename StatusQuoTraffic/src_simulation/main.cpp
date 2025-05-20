@@ -35,9 +35,9 @@ int main(int argc, const char * argv[]) {
     test_world.subgraph_size = 7;
     
     test_world.setup_simulation();
-    test_world.start_simulation();
+    test_world.start_simulation_write_data();
     
-    test_world.map.exportToFile("/Users/nielo/Desktop/StatusQuoTraffic/graph_whole.txt");
+    test_world.map.exportToFile("/Users/nielo/Desktop/StatusQuoTraffic/StatusQuoTraffic/data/graph_whole.txt");
     
     for (auto& agent : test_world.agents){
         //std::cout << std::get<0>(test_world.map.adjList[agent.agent_id][7]) << std::endl;
