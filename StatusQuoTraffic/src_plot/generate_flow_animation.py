@@ -146,19 +146,19 @@ def plot_all_graphs(num_graphs, subgraph_size, num_subgraphs):
         print(f"Plotting {filename} -> {save_path}")
         plot_graph_circle_deux(filename, subgraph_size, num_subgraphs, save_path)
 
-def create_animation(num_graphs, fps=2, output_folder = "animations"):
+def create_animation(num_graphs, fps=10, output_folder = "animations"):
     images = []
     for i in range(1, num_graphs + 1):
         img_path = os.path.join("plots", f"graph_{i}.png")
         images.append(imageio.imread(img_path))
-    output_path = os.path.join(output_folder, 'graph_animation.mp4')
+    output_path = os.path.join(output_folder, 'graph_animation_2.mp4')
     imageio.mimsave(output_path, images, fps=fps, codec = 'libx264')
-    print("Animation saved as graph_animation.gif")
+    print("Animation saved as graph_animation_2.mp4")
 
 if __name__ == "__main__":
     print("Looking for files in data folder")
-    num_graphs = 28  # change to how many you have
-    subgraph_size = 7
+    num_graphs = 59  # change to how many you have
+    subgraph_size = 15
     num_subgraphs = 6
     
     plot_all_graphs(num_graphs, subgraph_size, num_subgraphs)

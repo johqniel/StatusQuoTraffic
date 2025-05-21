@@ -43,6 +43,7 @@ public:
     void increaseNewFlowFAST(int u, int v);
     void decreaseNewFlowFAST(int u, int v);
     unsigned long countALLVerts() const;
+    void printNeighbors(int v);
 
                             
     
@@ -70,7 +71,9 @@ private:
 };
 
 
+Graph create_test_graph();
 
+Graph create_test_graph_large();
 
 /*
  

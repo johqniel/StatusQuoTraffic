@@ -98,3 +98,24 @@ unsigned long Graph::countALLVerts() const {
     return uniqueNodes.size();
 }
 
+void Graph::printNeighbors(int vertex) {
+    if (adjList.find(vertex) == adjList.end()) {
+        std::cout << "Vertex " << vertex << " not found in the graph." << std::endl;
+        return;
+    }
+
+    std::cout << "Neighbors of vertex " << vertex << ":" << std::endl;
+    for (const auto& [neighbor, edge_data] : adjList[vertex]) {
+        double weight = std::get<0>(edge_data);
+        std::string type = std::get<1>(edge_data);
+        int flow = std::get<2>(edge_data);
+        int capacity = std::get<4>(edge_data);
+        std::cout << "  Neighbor: " << neighbor
+                  << ", Weight: " << weight
+                  << ", Type: " << type
+                  << ", Flow: " << flow
+                  << ", Capacity: " << capacity
+                  << std::endl;
+    }
+}
+

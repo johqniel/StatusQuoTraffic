@@ -16,6 +16,17 @@
 
 
 void Graph::addEdge(int u, int v, double weight, std::string type, int flow, int flow_new, int capacity) {
+    std::cout << "Added edge from " << u << " to " << v << " type is " << type << std::endl;
+    if (adjList.find(u) == adjList.end()){
+        adjList[u][u] = {0,"none",0,0,0};
+    }
+    if (adjList.find(v) == adjList.end()){
+        adjList[v][v] = {0,"none",0,0,0};
+    }
+    if (type == "" || type == " "){
+        std::cout << "empty type" << std::endl;
+        type = "None";
+    }
     adjList[u][v] = {weight,type,flow, flow_new, capacity};
 }
 
@@ -66,7 +77,7 @@ void Graph::decreaseNewFlowFAST(int u, int v){
 //bool changeEdgeFlowCHECK(int u, int v, double new_flow);
 
 
-std::vector<int> Graph::dijkstra(int source, int target) {
+std::vector<int> Graph::dijkstra_flow(int source, int target) {
     // the path that is returned later
     std::vector<int> path;
     // known shortest distance from source to other nodes
@@ -168,7 +179,7 @@ std::vector<int> Graph::dijkstra(int source, int target) {
 }
 
 
-std::vector<int> Graph::dijkstra_flow(int source, int target) {
+std::vector<int> Graph::dijkstra(int source, int target) {
     // the path that is returned later
     std::vector<int> path;
     // known shortest distance from source to other nodes

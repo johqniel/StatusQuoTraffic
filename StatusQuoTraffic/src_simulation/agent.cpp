@@ -94,23 +94,9 @@ void Agent::update_personal_edges(std::string new_comuter_type){
 
 void Agent::generate_profile(int agent_id, Graph* the_map){
     home = 0;
-    work = 6;
+    work = 14;
     comuter_type = "bike";
     map_ptr = the_map;
     
 }
 
-/*
-
-void Agent::add_randomness_to_agents_test(unsigned number_of_subgraphs){
-    std::vector<double> random_weights = generate_random_doubles(number_of_subgraphs);
-    int i = 0;
-    for (auto [v,info] : map_ptr->adjList[agent_id]){
-        std::get<0>(info) = random_weights[i];
-        //std::cout << random_weights[i] << std::endl;
-        i += 1;
-    }
-    
-}
-
-*/

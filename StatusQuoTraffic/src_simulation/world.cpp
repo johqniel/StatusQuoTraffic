@@ -6,6 +6,7 @@
 //
 
 #include "world.h"
+#include "graph.h"
 #include "utilities.h"
 #include <vector>
 #include <queue>

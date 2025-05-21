@@ -8,7 +8,7 @@
 #include "world.h"
 
 void World::initilize_map(){
-    map = create_test_graph();
+    map = create_test_graph_large();
     map.expandGraphForTransportTypes();
 }
 

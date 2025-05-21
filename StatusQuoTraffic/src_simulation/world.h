@@ -13,7 +13,6 @@
 #include "graph.h"
 #include "agent.h"
 #include "utilities.h"
-#include "test.h"
 
 class World{
 public:
@@ -21,7 +20,7 @@ public:
     int number_of_subgraphs = 6;
     std::vector<Agent> agents;
     Graph map;
-    int simulation_horizon = 60;
+    int simulation_horizon = 30;
     int number_of_agents = 1000;
     unsigned long nextFreeAgentId = 0;
     std::unordered_map<std::string,std::unordered_map<std::string,std::tuple<double ,double >>> commuter_type_weights_matrix;

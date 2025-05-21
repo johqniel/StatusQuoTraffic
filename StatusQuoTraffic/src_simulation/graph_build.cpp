@@ -17,8 +17,9 @@
 
 
 void Graph::expandGraphForTransportTypes() {
+    //std::cout << "ExpandGraphForTransportTypes" << std::endl;
     // Step 2: Define which types to add
-    std::vector<std::string> extra_types = subgraph_types;
+    //std::vector<std::string> extra_types = subgraph_types;
                                         // {"bike","public", "car", "bike-public", "public-bike", "car-public"}
     
     
@@ -31,8 +32,8 @@ void Graph::expandGraphForTransportTypes() {
     
     // loop over types
         // loop over vertizies u < size_of_subgraph and add all verticies
-    for (size_t i = 0; i < extra_types.size(); ++i) {
-        std::string type = extra_types[i];
+    for (size_t i = 0; i < subgraph_types.size(); ++i) {
+        std::string type = subgraph_types[i];
         int offset = (i + 1) * size_of_subgraphs;  // avoid overlap
         
         for (int u = 0; u < size_of_subgraphs; u++){
@@ -46,7 +47,7 @@ void Graph::expandGraphForTransportTypes() {
         }
     }
     
-    number_of_subgraphs = extra_types.size();  // original + copies
+    number_of_subgraphs = subgraph_types.size();  // original + copies
     
     // Step 4: delete original subgraph
     for (int u = 0; u < size_of_subgraphs; u ++) {
@@ -59,6 +60,7 @@ void Graph::expandGraphForTransportTypes() {
             int offset = (i + 1) * size_of_subgraphs;
             //addEdge(u, u + offset, 0 , "walk"); // we used to have it as entry and exit points.
             addEdge(u + offset, u, 0, "walk");
+            
         }
     }
     
@@ -104,11 +106,11 @@ void Graph::expandGraphForAgentsRandom(std::vector <Agent> agents){
     int i = 1;
     for (std::string transportation_type : subgraph_types){
         int entry_vert_offset = i * size_of_subgraphs;
-        std::cout << "size of subgraphs = " << size_of_subgraphs << std::endl;
+        //std::cout << "size of subgraphs = " << size_of_subgraphs << std::endl;
         for (Agent agent : agents){
             double random_weight = generate_random_double(0,12);
             addEdge(agent.agent_id,agent.home + entry_vert_offset, random_weight, "walk");
-            std::cout << random_weight << std::endl;
+            //std::cout << random_weight << std::endl;
         }
             
         i += 1;
