@@ -52,7 +52,7 @@ void Agent::setup_variables_for_next_period(){
  
 void Agent::best_path_to_work(){
     //print_int_vector(path_new, "before dijkstra new path: ");
-    path_new = map_ptr->dijkstra_flow(agent_id,work);
+    path_new = map_ptr->dijkstra(agent_id,work);
 }
 
 std::vector<int> Agent::return_best_path_to_work(){
@@ -92,10 +92,8 @@ void Agent::update_personal_edges(std::string new_comuter_type){
     }
 }
 
-void Agent::generate_profile(int agent_id, Graph* the_map){
-    home = 0;
-    work = 14;
-    comuter_type = "bike";
+void Agent::generate_profile(int agent_id, Graph* the_map,int home, int work, std::string type_com){
+    comuter_type = type_com;
     map_ptr = the_map;
     
 }

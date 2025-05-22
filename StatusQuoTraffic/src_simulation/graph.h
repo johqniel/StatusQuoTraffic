@@ -13,6 +13,14 @@
 #include <unordered_set>
 #include "agent.h"
 
+
+struct graphIdentifier{
+    int size_of_subgraphs = 18;
+    std::string graph_identifier = "test_large_graph_three_entry";
+    std::vector<int> homeOptions = {0,15,16,17};
+    std::vector<int> workOptions = {14};
+};
+
 class Graph {
 public:
     // functions:
@@ -28,10 +36,11 @@ public:
     
     // import export
     void exportToFile(const std::string& filename);
+    void removeEmptyTypeEdges();
     
     // graph functions
     std::vector<int> dijkstra(int source, int target);
-    std::vector<int> dijkstra_flow(int source, int target);
+    //std::vector<int> dijkstra_flow(int source, int target);
 
     int size();
     
@@ -54,6 +63,8 @@ public:
         // data
     int number_of_subgraphs;
     int size_of_subgraphs;
+    std::vector<int> homeOptions = {0,15,16,17};
+    std::vector<int> workOptions = {14};
     std::vector<std::string> transport_types = {"bike","public","car","bike-public","public-bike","car-public","walk"};
     std::vector<std::string> subgraph_types = {"bike","public","car","bike-public","public-bike","car-public"};
     std::unordered_set<std::string> subgraph_types_set = {"bike","public","car","bike-public","public-bike","car-public"};
@@ -64,7 +75,9 @@ public:
     
 private:
     
-    std::unordered_map<int, std::unordered_map<int, std::tuple<double, std::string, int, int, int>>> adjList;
+    std::unordered_map<int, std::unordered_map<int, std::tuple<double, std::string, int, int, int, double>>> adjList;
+    // u -> v -> info = (base_weight, type, flow, flow_new, capacity, weighted_weight)
+    // dijkstra calculates with weighted weight.
 
     std::unordered_map<int, std::vector<int>> equivaleny_of_verticies; // here the first entry of #2 should always be equal to #1 also
                                                                        // in total #2 should have as many entries as this->size_of_subgraphs

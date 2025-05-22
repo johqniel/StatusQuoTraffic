@@ -46,7 +46,7 @@ public:
 
     // setup functions
     void setup_variables_for_next_period();
-    void generate_profile(int agent_id, Graph* the_map);
+    void generate_profile(int agent_id, Graph* the_map,int home, int work, std::string type_com);
     
     // randomnes
     

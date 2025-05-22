@@ -8,12 +8,14 @@
 #include "world.h"
 #include "utilities.h"
 #include <iostream>
+#include "randomness_functions.h"
 
 
 void World::add_agent(int agent_id){
     Agent new_agent;
     new_agent.agent_id = agent_id; // the new agents id is the number of its personal home verticy
-    new_agent.generate_profile(agent_id, &map);
+    AgentProfile random_profile = generateRandomAgentProfile(homeOptions, workOptions, typeOptions);
+    new_agent.generate_profile(agent_id, &map, random_profile.home, random_profile.work, random_profile.type);
     agents.push_back(new_agent);
     // For each agent we have to add edges from their personal verticy (= their agent_id) to the home verticies of the subgraphs.
     // this is done in the build graph module for all agents at once

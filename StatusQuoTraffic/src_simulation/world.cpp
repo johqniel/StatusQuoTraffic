@@ -53,9 +53,9 @@ void World::start_simulation_write_data(){
     }
 }
 
-void World::setup_simulation(){
+void World::setup_simulation(graphIdentifier graphInfo){
     setup_commuter_type_weights_matrix();
-    initilize_map();
+    initilize_map(graphInfo);
     nextFreeAgentId = map.countALLVerts() + 1; // the plus one is there just to make sure :-D
     initilize_agents();
     setup_commuter_types_weights_of_agents();
